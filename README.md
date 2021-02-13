@@ -1,5 +1,6 @@
 CloudCamPlugin
 ==============
+![screenshot](screenshot.png)
 A plugin that adds [CloudCam](https://github.com/storytold/cloudcam)-based actors to 
 projects as well as a ZeroMq-based network poller to handle the protocol.
 
