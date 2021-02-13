@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "CloudCam",
+	"Description": "Point clouds streamed from Rust",
+	"Category": "Other",
+	"CreatedBy": "Brandon Thomas",
+	"CreatedByURL": "http://brand.io",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CloudCam",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
