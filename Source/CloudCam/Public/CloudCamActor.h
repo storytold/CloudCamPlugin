@@ -27,19 +27,19 @@ public:
 	~ACloudCamActor();
 
 	// The niagara system which should be used for rendering:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FX")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	UNiagaraSystem* pointCloudRenderer;
 	
 	// Niagara spawning location
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara Point Cloud")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	FVector spawnLocation;
 
 	// Niagara spawning rotation
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara Point Cloud")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	FRotator spawnRotation;
 
 	// Niagara scale
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Niagara Point Cloud")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	FVector scale;
 
 	

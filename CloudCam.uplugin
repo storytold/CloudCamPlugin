@@ -18,7 +18,11 @@
 		{
 			"Name": "CloudCam",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+      "LoadingPhase": "PostConfigInit",
+      "WhitelistPlatforms": [
+			  "Linux",
+        "Win64"
+      ]
 		}
 	]
 }

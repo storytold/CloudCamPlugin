@@ -1,5 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
+using System.IO;
 using UnrealBuildTool;
 
 public class CloudCam : ModuleRules
@@ -11,6 +12,7 @@ public class CloudCam : ModuleRules
 		PublicIncludePaths.AddRange(
 			new string[] {
 				// ... add public include paths required here ...
+				Path.Combine(ModuleDirectory, "Public")
 			}
 			);
 				
@@ -18,6 +20,7 @@ public class CloudCam : ModuleRules
 		PrivateIncludePaths.AddRange(
 			new string[] {
 				// ... add other private include paths required here ...
+				Path.Combine(ModuleDirectory, "Private")
 			}
 			);
 			
