@@ -46,9 +46,15 @@ ACloudCamActor::ACloudCamActor() :
 	positions = new float[textureWidth * textureHeight * 4];
 	colors = new uint8_t[textureWidth * textureHeight * 4];
 
-#if WITH_EDITORONLY_DATA
+	// Establish root component and bind it.
+	// This allows us to change the location of the actor in the editor.
+	// We can also show this location by parenting an ArrowComponent for in-editor visualization.
+	RootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootScene"));
+	RootComponent = RootSceneComponent;
+
+//#if WITH_EDITORONLY_DATA
 	arrowComponent = CreateEditorOnlyDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent0"));
-#endif
+//#endif
 
 	if (arrowComponent) {
 		arrowComponent->ArrowColor = FColor(255, 0, 0);
@@ -71,11 +77,18 @@ void ACloudCamActor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	FTransform rootTransform = GetTransform();
+	FQuat rotation = rootTransform.GetRotation();
+	FRotator rotator = rotation.Rotator();
 
 	FRotator updatedSpawnRotation = FRotator(
-		ACloudCamActor::BASE_PITCH + spawnRotation.Pitch, // y-axis rotation
-		ACloudCamActor::BASE_YAW + spawnRotation.Yaw, // z-axis rotation
-		ACloudCamActor::BASE_ROLL + spawnRotation.Roll // x-axis rotation
+		//ACloudCamActor::BASE_PITCH + spawnRotation.Pitch, // y-axis rotation
+		//ACloudCamActor::BASE_YAW + spawnRotation.Yaw, // z-axis rotation
+		//ACloudCamActor::BASE_ROLL + spawnRotation.Roll // x-axis rotation
+
+		ACloudCamActor::BASE_PITCH + rotator.Pitch, // y-axis rotation
+		ACloudCamActor::BASE_YAW + rotator.Yaw, // z-axis rotation
+		ACloudCamActor::BASE_ROLL + rotator.Roll // x-axis rotation
 	);
 
 
@@ -83,9 +96,9 @@ void ACloudCamActor::BeginPlay()
 	rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
 		this,
 		pointCloudRenderer,
-		spawnLocation,
+		rootTransform.GetTranslation(),
 		updatedSpawnRotation,
-		scale,
+		rootTransform.GetScale3D(),
 		true, 
 		true,
 		ENCPoolMethod::AutoRelease,

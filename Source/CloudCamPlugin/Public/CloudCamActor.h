@@ -48,6 +48,10 @@ public:
 	// Shows the direction of the camera
 	UPROPERTY()
 	class UArrowComponent* arrowComponent;
+
+	// Root component (for editable actor placement)
+	UPROPERTY()
+	class USceneComponent* RootSceneComponent;
 	
 protected:
 	// Called when the game starts or when spawned
