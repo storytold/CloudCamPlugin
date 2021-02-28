@@ -18,7 +18,7 @@
 
 DECLARE_LOG_CATEGORY_EXTERN(ZeroMqPollingThreadLog, Log, All);
 
-class CLOUDCAM_API FZeroMqPollingThread : public FRunnable
+class CLOUDCAMPLUGIN_API FZeroMqPollingThread : public FRunnable
 {
 public:
 	FZeroMqPollingThread();

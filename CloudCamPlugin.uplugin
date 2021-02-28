@@ -2,7 +2,7 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-	"FriendlyName": "CloudCam",
+	"FriendlyName": "CloudCamPlugin",
 	"Description": "Point clouds streamed from Rust",
 	"Category": "Other",
 	"CreatedBy": "Brandon Thomas",
@@ -16,7 +16,7 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "CloudCam",
+			"Name": "CloudCamPlugin",
 			"Type": "Runtime",
       "LoadingPhase": "PostConfigInit",
       "WhitelistPlatforms": [

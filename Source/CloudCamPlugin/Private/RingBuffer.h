@@ -7,7 +7,7 @@
 
 DECLARE_LOG_CATEGORY_EXTERN(RingBufferLog, Log, All);
 
-class CLOUDCAM_API RingBuffer {
+class CLOUDCAMPLUGIN_API RingBuffer {
 public:
 	RingBuffer();
 	RingBuffer(uint32 capacity);

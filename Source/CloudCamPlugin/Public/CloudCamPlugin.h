@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FCloudCamModule : public IModuleInterface
+class FCloudCamPluginModule : public IModuleInterface
 {
 public:
 

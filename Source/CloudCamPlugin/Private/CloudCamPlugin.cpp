@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "CloudCam.h"
+#include "CloudCamPlugin.h"
 
 #define LOCTEXT_NAMESPACE "FCloudCamModule"
 

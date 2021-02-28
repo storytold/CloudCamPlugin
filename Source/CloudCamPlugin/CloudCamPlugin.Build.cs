@@ -3,9 +3,9 @@
 using System.IO;
 using UnrealBuildTool;
 
-public class CloudCam : ModuleRules
+public class CloudCamPlugin : ModuleRules
 {
-	public CloudCam(ReadOnlyTargetRules Target) : base(Target)
+	public CloudCamPlugin(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		

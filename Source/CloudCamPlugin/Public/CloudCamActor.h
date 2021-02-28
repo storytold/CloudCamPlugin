@@ -17,7 +17,7 @@
 DECLARE_LOG_CATEGORY_EXTERN(CloudCamActorLog, Log, All);
 
 UCLASS(Blueprintable)
-class CLOUDCAM_API ACloudCamActor : public AActor
+class CLOUDCAMPLUGIN_API ACloudCamActor : public AActor
 {
 	GENERATED_BODY()
 
