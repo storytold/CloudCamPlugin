@@ -40,7 +40,7 @@ public class CloudCamPlugin : ModuleRules
 				"ZeroMQ",
 
 				// NB(bt): Using Niagara for point clouds now.
-				"Niagara"
+				"Niagara",
 			}
 			);
 			

@@ -25,6 +25,7 @@ void SetZeroMqNiagaraVariableTexture(class UNiagaraComponent* niagara, FString v
 
 
 ACloudCamActor::ACloudCamActor() :
+	arrowComponent(nullptr),
 	zeromq_thread(nullptr),
 	point_buffer(TSharedPtr<RingBuffer>(nullptr))
 {
@@ -44,7 +45,21 @@ ACloudCamActor::ACloudCamActor() :
 
 	positions = new float[textureWidth * textureHeight * 4];
 	colors = new uint8_t[textureWidth * textureHeight * 4];
+
+#if WITH_EDITORONLY_DATA
+	arrowComponent = CreateEditorOnlyDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent0"));
+#endif
+
+	if (arrowComponent) {
+		arrowComponent->ArrowColor = FColor(255, 0, 0);
+		arrowComponent->bTreatAsASprite = true;
+		arrowComponent->SetupAttachment(RootComponent);
+		arrowComponent->bLightAttachment = true;
+		arrowComponent->bIsScreenSizeScaled = true;
+		arrowComponent->bHiddenInGame = true;
+	}
 }
+
 
 ACloudCamActor::~ACloudCamActor()
 {

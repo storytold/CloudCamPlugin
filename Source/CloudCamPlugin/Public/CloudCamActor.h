@@ -10,6 +10,9 @@
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraSystem.h"
 
+// Unreal Editor Component Visualization
+#include "Components/ArrowComponent.h"
+
 // CloudCam
 #include "ZeroMqPollingThread.h"
 #include "CloudCamActor.generated.h"
@@ -42,6 +45,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	FVector scale;
 
+	// Shows the direction of the camera
+	UPROPERTY()
+	class UArrowComponent* arrowComponent;
 	
 protected:
 	// Called when the game starts or when spawned
