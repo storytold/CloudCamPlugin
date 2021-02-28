@@ -14,8 +14,14 @@ from `CloudCamPlugin` to `CloudCam`.
 This also requires the [ZeroMQ plugin](https://github.com/storytold/UnrealZeroMQ) to 
 be installed as well.
 
-
 See this tutorial on [Working with plugins](https://www.unrealengine.com/en-US/onlinelearning-courses/best-practices-for-creating-and-using-plugins)
+
+Usage
+-----
+You need to set `CloudCamActor`'s "Point Cloud Renderer" (in "Details pane") to the `CloudCam_NiagaraSystem`.
+
+Old Documentation
+-----------------
 
 ### Patching the UnrealZeroMQ Plugin
 The open source (?) UnrealZeroMQ plugin doesn't build correctly by default, so it's necessary 
