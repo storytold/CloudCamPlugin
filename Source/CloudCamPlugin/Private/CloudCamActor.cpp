@@ -2,6 +2,11 @@
 
 DEFINE_LOG_CATEGORY(CloudCamActorLog);
 
+const float ACloudCamActor::BASE_PITCH = 0.0; // Y-axis
+const float ACloudCamActor::BASE_ROLL = 120.0; // X-axis
+const float ACloudCamActor::BASE_YAW = 300.0; // Z-axis
+
+
 /**
  * Just a helper method to set a texture for a user variable because the UNiagaraComponent 
  * has no direct way to edit a texture variable compared to float, vectors, ...
@@ -51,12 +56,20 @@ void ACloudCamActor::BeginPlay()
 {
 	Super::BeginPlay();
 
+
+	FRotator updatedSpawnRotation = FRotator(
+		ACloudCamActor::BASE_PITCH + spawnRotation.Pitch, // y-axis rotation
+		ACloudCamActor::BASE_YAW + spawnRotation.Yaw, // z-axis rotation
+		ACloudCamActor::BASE_ROLL + spawnRotation.Roll // x-axis rotation
+	);
+
+
 	// Initialize the Niagara System:
 	rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
 		this,
 		pointCloudRenderer,
 		spawnLocation,
-		spawnRotation,
+		updatedSpawnRotation,
 		scale,
 		true, 
 		true,

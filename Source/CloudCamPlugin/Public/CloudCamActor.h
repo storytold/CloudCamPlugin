@@ -50,6 +50,14 @@ protected:
 	virtual void BeginDestroy() override;
 
 private:
+	/** 
+	 * These rotations are applied to essentially "zero" the actor. 
+	 * Any custom rotations are applied after these are made.
+	 */
+	static const float BASE_PITCH; // Y-axis rotation 
+	static const float BASE_ROLL; // X-axis rotation
+	static const float BASE_YAW; // Z-axis rotation
+
 	FZeroMqPollingThread* zeromq_thread;
 	TSharedPtr<RingBuffer> point_buffer;
 
@@ -77,4 +85,3 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 };
-
