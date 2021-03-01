@@ -87,8 +87,8 @@ void ACloudCamCharacter::BeginPlay()
 		pointCloudRenderer,
 		RootComponent,
 		TEXT("PointCloudSystem"),
-		FVector(0.0, 0.0, 0.0), // location
-		FRotator(0), // rotation
+		FVector(500.0, 0.0, 500.0), // location
+		updatedSpawnRotation, // rotation
 		FVector(0.5), // scale
 		EAttachLocation::SnapToTarget,
 		true, // auto destroy
