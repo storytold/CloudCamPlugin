@@ -24,7 +24,8 @@ void SetCharacterZeroMqNiagaraVariableTexture(class UNiagaraComponent* niagara, 
 }
 
 
-ACloudCamCharacter::ACloudCamCharacter() :
+ACloudCamCharacter::ACloudCamCharacter(const FObjectInitializer& ObjectInitializer) :
+    Super(ObjectInitializer),
 	zeromq_thread(nullptr),
 	point_buffer(TSharedPtr<RingBuffer>(nullptr))
 {
@@ -71,7 +72,8 @@ void ACloudCamCharacter::BeginPlay()
 
 
 	// Initialize the Niagara System:
-	/*rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+	/*
+	rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
 		this,
 		pointCloudRenderer,
 		rootTransform.GetTranslation(),
@@ -81,15 +83,16 @@ void ACloudCamCharacter::BeginPlay()
 		true,
 		ENCPoolMethod::AutoRelease,
 		true
-	);*/
+	);
+	*/
 
 	rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAttached(
 		pointCloudRenderer,
 		RootComponent,
 		TEXT("PointCloudSystem"),
-		FVector(500.0, 0.0, 500.0), // location
+		FVector(0.0, 100.0, 100.0), // location
 		updatedSpawnRotation, // rotation
-		FVector(0.5), // scale
+		FVector(0.10), // scale
 		EAttachLocation::SnapToTarget,
 		true, // auto destroy
 		ENCPoolMethod::AutoRelease,
@@ -149,8 +152,6 @@ void ACloudCamCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//rendererInstance->
-	
 	if (!point_buffer->CurrentlyHasPoints()) {
 		UE_LOG(CloudCamCharacterLog, Log, TEXT("Tick(): Buffer currently does not have points; early exit."));
 		return;

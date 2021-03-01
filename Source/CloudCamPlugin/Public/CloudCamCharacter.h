@@ -27,7 +27,8 @@ class CLOUDCAMPLUGIN_API ACloudCamCharacter : public ACharacter
 
 public:
 
-	ACloudCamCharacter();
+	ACloudCamCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	//ACloudCamCharacter();
 	~ACloudCamCharacter();
 
 	// The niagara system which should be used for rendering:
