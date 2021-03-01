@@ -60,7 +60,7 @@ ACloudCamActor::ACloudCamActor() :
 		arrowComponent->ArrowColor = FColor(255, 0, 0);
 		arrowComponent->bTreatAsASprite = true;
 		arrowComponent->SetupAttachment(RootComponent);
-		arrowComponent->bLightAttachment = true;
+		//arrowComponent->bLightAttachment = true;
 		arrowComponent->bIsScreenSizeScaled = true;
 		arrowComponent->bHiddenInGame = true;
 	}
@@ -82,10 +82,6 @@ void ACloudCamActor::BeginPlay()
 	FRotator rotator = rotation.Rotator();
 
 	FRotator updatedSpawnRotation = FRotator(
-		//ACloudCamActor::BASE_PITCH + spawnRotation.Pitch, // y-axis rotation
-		//ACloudCamActor::BASE_YAW + spawnRotation.Yaw, // z-axis rotation
-		//ACloudCamActor::BASE_ROLL + spawnRotation.Roll // x-axis rotation
-
 		ACloudCamActor::BASE_PITCH + rotator.Pitch, // y-axis rotation
 		ACloudCamActor::BASE_YAW + rotator.Yaw, // z-axis rotation
 		ACloudCamActor::BASE_ROLL + rotator.Roll // x-axis rotation
