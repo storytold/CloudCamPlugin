@@ -32,10 +32,6 @@ ACloudCamCharacter::ACloudCamCharacter() :
 	// You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	spawnLocation = FVector(0.0, 0.0, 0.0);
-	spawnRotation = FRotator(0);
-	scale = FVector(1);
-
 	textureWidth = 1280; // NB: Rust program
 	textureHeight = 1152; // NB: Rust program
 	pointCount = textureWidth * textureHeight;
@@ -48,8 +44,8 @@ ACloudCamCharacter::ACloudCamCharacter() :
 	// Establish root component and bind it.
 	// This allows us to change the location of the actor in the editor.
 	// We can also show this location by parenting an ArrowComponent for in-editor visualization.
-	RootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootScene"));
-	RootComponent = RootSceneComponent;
+	//RootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootScene"));
+	//RootComponent = RootSceneComponent;
 }
 
 
@@ -75,7 +71,7 @@ void ACloudCamCharacter::BeginPlay()
 
 
 	// Initialize the Niagara System:
-	rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+	/*rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
 		this,
 		pointCloudRenderer,
 		rootTransform.GetTranslation(),
@@ -85,7 +81,22 @@ void ACloudCamCharacter::BeginPlay()
 		true,
 		ENCPoolMethod::AutoRelease,
 		true
+	);*/
+
+	rendererInstance = UNiagaraFunctionLibrary::SpawnSystemAttached(
+		pointCloudRenderer,
+		RootComponent,
+		TEXT("PointCloudSystem"),
+		FVector(0.0, 0.0, 0.0), // location
+		FRotator(0), // rotation
+		FVector(0.5), // scale
+		EAttachLocation::SnapToTarget,
+		true, // auto destroy
+		ENCPoolMethod::AutoRelease,
+		true, // auto activate
+		true // pre cull check
 	);
+
 	rendererInstance->SetCastShadow(true);
 
 	positionTexture = UTexture2D::CreateTransient(textureWidth, textureHeight, PF_A32B32G32R32F, "PositionData");
@@ -137,6 +148,8 @@ void ACloudCamCharacter::BeginDestroy()
 void ACloudCamCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//rendererInstance->
 	
 	if (!point_buffer->CurrentlyHasPoints()) {
 		UE_LOG(CloudCamCharacterLog, Log, TEXT("Tick(): Buffer currently does not have points; early exit."));

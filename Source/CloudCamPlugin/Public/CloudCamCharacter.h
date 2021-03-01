@@ -34,21 +34,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	UNiagaraSystem* pointCloudRenderer;
 	
-	// Niagara spawning location
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
-	FVector spawnLocation;
-
-	// Niagara spawning rotation
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
-	FRotator spawnRotation;
-
-	// Niagara scale
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
-	FVector scale;
-
 	// Root component (for editable actor placement)
-	UPROPERTY()
-	class USceneComponent* RootSceneComponent;
+	//UPROPERTY()
+	//class USceneComponent* RootSceneComponent;
 	
 protected:
 	// Called when the game starts or when spawned
