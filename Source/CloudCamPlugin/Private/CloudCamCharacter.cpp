@@ -4,8 +4,8 @@ DEFINE_LOG_CATEGORY(CloudCamCharacterLog);
 
 const float ACloudCamCharacter::BASE_PITCH = 0.0; // Y-axis
 const float ACloudCamCharacter::BASE_ROLL = 120.0; // X-axis
-//const float ACloudCamCharacter::BASE_YAW = 300.0; // Z-axis
-const float ACloudCamCharacter::BASE_YAW = 20.0; // This might work for SecondStream
+const float ACloudCamCharacter::BASE_YAW = 300.0; // Z-axis
+//const float ACloudCamCharacter::BASE_YAW = 20.0; // This might work for SecondStream
 
 
 /**
@@ -61,14 +61,15 @@ void ACloudCamCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// NB/TODO: We actually don't want the "start position" rotation to permanantly offset the cloudcam
 	FTransform rootTransform = GetTransform();
 	FQuat rotation = rootTransform.GetRotation();
 	FRotator rotator = rotation.Rotator();
 
 	FRotator updatedSpawnRotation = FRotator(
-		ACloudCamCharacter::BASE_PITCH + rotator.Pitch, // y-axis rotation
-		ACloudCamCharacter::BASE_YAW + rotator.Yaw, // z-axis rotation
-		ACloudCamCharacter::BASE_ROLL + rotator.Roll // x-axis rotation
+		ACloudCamCharacter::BASE_PITCH, //+ rotator.Pitch, // y-axis rotation
+		ACloudCamCharacter::BASE_YAW, // + rotator.Yaw, // z-axis rotation
+		ACloudCamCharacter::BASE_ROLL //+ rotator.Roll // x-axis rotation
 	);
 
 
