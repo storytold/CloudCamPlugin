@@ -36,11 +36,8 @@ public class CloudCamPlugin : ModuleRules
 				"Core",
 				// ... add other public dependencies that you statically link with here ...
 
-				// NB(bt): ZeroMQ to accept points from another process
-				"ZeroMQ",
-
-				// NB(bt): Using Niagara for point clouds now.
-				"Niagara",
+				"ZeroMQ", // NB(bt): to accept points from another process
+				"Niagara", // NB(bt): for point clouds.
 			}
 			);
 			

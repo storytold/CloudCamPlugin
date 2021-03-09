@@ -4,7 +4,9 @@ DEFINE_LOG_CATEGORY(CloudCamCharacterLog);
 
 const float ACloudCamCharacter::BASE_PITCH = 0.0; // Y-axis
 const float ACloudCamCharacter::BASE_ROLL = 120.0; // X-axis
-const float ACloudCamCharacter::BASE_YAW = 300.0; // Z-axis
+//const float ACloudCamCharacter::BASE_YAW = 300.0; // Z-axis
+//const float ACloudCamCharacter::BASE_YAW = 360.0; // Z-axis too far right (facing screen right)
+const float ACloudCamCharacter::BASE_YAW = 20.0;
 
 
 /**
