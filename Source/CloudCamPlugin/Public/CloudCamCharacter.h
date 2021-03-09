@@ -34,6 +34,10 @@ public:
 	// The niagara system which should be used for rendering:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
 	UNiagaraSystem* pointCloudRenderer;
+
+	// Where to spawn the niagara system relative to actor origin (0, 0, 0).
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CloudCam")
+	FVector NiagaraSpawnPoint;
 	
 	// Root component (for editable actor placement)
 	//UPROPERTY()
