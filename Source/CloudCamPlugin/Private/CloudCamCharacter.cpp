@@ -2,9 +2,19 @@
 
 DEFINE_LOG_CATEGORY(CloudCamCharacterLog);
 
+
+// NB/TODO(2022-03-20): These values seem wrong
+//const float ACloudCamCharacter::BASE_PITCH = 0.0; // Y-axis
+//const float ACloudCamCharacter::BASE_ROLL = 120.0; // X-axis
+//const float ACloudCamCharacter::BASE_YAW = 300.0; // Z-axis
+
+// Y=0, X=90, Z=0 is ALMOST RIGHT. Stands vertically, but faces left.
+const float ACloudCamCharacter::BASE_ROLL = 90.0; // X-axis (90.0 is correct to orient standing vertically; we need something for facing the camera)
 const float ACloudCamCharacter::BASE_PITCH = 0.0; // Y-axis
-const float ACloudCamCharacter::BASE_ROLL = 120.0; // X-axis
-const float ACloudCamCharacter::BASE_YAW = 300.0; // Z-axis
+const float ACloudCamCharacter::BASE_YAW = 270.0; // Z-axis
+
+// Roll(X) = 90, Pitch(Y) = 0, Yaw(Z) = 270 WORKS!!!!
+
 //const float ACloudCamCharacter::BASE_YAW = 20.0; // This might work for SecondStream
 
 
